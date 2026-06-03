@@ -1,0 +1,38 @@
+{
+  "id": "com.vantage.calendar",
+  "name": "Calendar",
+  "version": "1.0.0",
+  "description": "Workspace calendar with events, holidays, and company milestones.",
+  "icon": "Calendar",
+  "author": "Vantage",
+  "permissions": [
+    { "key": "calendar:view",   "label": "View calendar events",   "defaultRoles": ["admin", "member"] },
+    { "key": "calendar:manage", "label": "Manage calendar events", "defaultRoles": ["admin"] }
+  ],
+  "data_access": [],
+  "tables": [],
+  "migrations": [
+    {
+      "version": "1.0.0",
+      "up": "CREATE TABLE IF NOT EXISTS calendar_events (id UUID PRIMARY KEY DEFAULT gen_random_uuid(), workspace_id UUID NOT NULL, created_by UUID NOT NULL, title VARCHAR NOT NULL, description TEXT, category VARCHAR NOT NULL DEFAULT 'other', color VARCHAR, start_date DATE NOT NULL, end_date DATE, all_day BOOLEAN NOT NULL DEFAULT true, created_at TIMESTAMPTZ NOT NULL DEFAULT now(), updated_at TIMESTAMPTZ NOT NULL DEFAULT now()); CREATE INDEX IF NOT EXISTS calendar_events_workspace_id_idx ON calendar_events (workspace_id); CREATE INDEX IF NOT EXISTS calendar_events_start_date_idx ON calendar_events (workspace_id, start_date);",
+      "down": "DROP TABLE IF EXISTS calendar_events;"
+    }
+  ],
+  "hooks": [],
+  "emits": ["com.vantage.calendar.event.created", "com.vantage.calendar.event.updated"],
+  "surfaces": {
+    "nav": [{ "label": "Calendar", "path": "/calendar", "icon": "Calendar", "group": "general" }],
+    "pages": [{ "path": "/calendar", "title": "Calendar" }],
+    "panels": [
+      { "record_type": "contact", "id": "calendar-contact-panel", "label": "Calendar" },
+      { "record_type": "deal",    "id": "calendar-deal-panel",    "label": "Calendar Events" }
+    ]
+  },
+  "settings_schema": [
+    { "key": "show_holidays", "type": "boolean", "label": "Show public holidays", "default": true }
+  ],
+  "build": {
+    "server": "src/server.ts",
+    "client": "src/client.tsx"
+  }
+}
