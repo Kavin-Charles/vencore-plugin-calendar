@@ -2,11 +2,11 @@
 
 ## Goal
 
-Build a complete internal workspace calendar plugin for Vantage. The plugin should feel like a finished scheduling product: fast calendar navigation, rich event creation, recurring meetings, reminders, CRM links, record panels, search/commands, settings, and ICS import/export. This version is internal-only. It must not implement Google Calendar, Outlook, CalDAV, or any external live sync.
+Build a complete internal workspace calendar plugin for Vencore. The plugin should feel like a finished scheduling product: fast calendar navigation, rich event creation, recurring meetings, reminders, CRM links, record panels, search/commands, settings, and ICS import/export. This version is internal-only. It must not implement Google Calendar, Outlook, CalDAV, or any external live sync.
 
 ## Current State
 
-`vantage-plugin-calendar` currently has:
+`vencore-plugin-calendar` currently has:
 
 - `plugin.json` with basic nav/page/panel surfaces, two permission keys, one `calendar_events` migration, and a simple settings field.
 - `src/routes/calendar.ts` with basic date-range CRUD over `calendar_events`.
@@ -55,7 +55,7 @@ The plugin SDK supports the needed internal product surface:
 ## Product Principles
 
 - The first screen is the usable calendar, not an explanation page.
-- The UI should match Vantage: dense, operational, calm, and built for repeated use.
+- The UI should match Vencore: dense, operational, calm, and built for repeated use.
 - Every important action should work from both the main calendar and linked record panels.
 - Internal-only does not mean minimal. The plugin should be feature-rich but self-contained.
 - Recurrence and reminders must be correct before decorative UI polish.
@@ -167,7 +167,7 @@ The backend stores the recurrence rule on the series event and stores exceptions
 
 Attendees include:
 
-- Internal Vantage users.
+- Internal Vencore users.
 - Optional external email text entries for reference only.
 
 The plugin records:
@@ -194,9 +194,9 @@ Events can have multiple reminders:
 - 1 day before.
 - Custom minute offset.
 
-A cron job checks due reminders and calls `vantage.notify`. Reminder delivery must be idempotent, using persisted delivery rows or delivery timestamps so repeated cron runs do not duplicate notifications.
+A cron job checks due reminders and calls `vencore.notify`. Reminder delivery must be idempotent, using persisted delivery rows or delivery timestamps so repeated cron runs do not duplicate notifications.
 
-### Links To Vantage Records
+### Links To Vencore Records
 
 Events can link to:
 
@@ -205,7 +205,7 @@ Events can link to:
 - Deals.
 - Tasks.
 
-Linked events show in record panels. CRM-linked event create/update/delete should log Vantage activity when `activity:write` data access is available. The activity body should mention only the event title, date, action, and linked record context.
+Linked events show in record panels. CRM-linked event create/update/delete should log Vencore activity when `activity:write` data access is available. The activity body should mention only the event title, date, action, and linked record context.
 
 ### Panels
 
@@ -474,7 +474,7 @@ Indexes:
 
 ### `calendar_event_links`
 
-Links to Vantage records.
+Links to Vencore records.
 
 - `id uuid primary key`
 - `workspace_id uuid not null`
@@ -616,12 +616,12 @@ The current `src/routes/calendar.ts` can either be replaced by focused route fil
 
 Declare and emit:
 
-- `com.vantage.calendar.event.created`
-- `com.vantage.calendar.event.updated`
-- `com.vantage.calendar.event.deleted`
-- `com.vantage.calendar.event.rsvp_updated`
-- `com.vantage.calendar.reminder.fired`
-- `com.vantage.calendar.ics.imported`
+- `com.vencore.calendar.event.created`
+- `com.vencore.calendar.event.updated`
+- `com.vencore.calendar.event.deleted`
+- `com.vencore.calendar.event.rsvp_updated`
+- `com.vencore.calendar.reminder.fired`
+- `com.vencore.calendar.ics.imported`
 
 Payloads should include:
 
@@ -737,4 +737,4 @@ Because this plugin already declares an initial SQL migration in `plugin.json`, 
 - Sending invite emails.
 - Public booking links.
 - Mobile app implementation.
-- Changes to Vantage core SDK unless a blocker is discovered during implementation.
+- Changes to Vencore core SDK unless a blocker is discovered during implementation.

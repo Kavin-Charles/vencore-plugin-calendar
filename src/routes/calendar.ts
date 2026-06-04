@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { z } from 'zod';
 import { sql, type Kysely, type SqlBool } from 'kysely';
-import type { Database } from '@vantage/db';
+import type { Database } from '@vencore/db';
 import type { AuthenticatedRequest } from '../types';
 
 const VALID_CATEGORIES = ['holiday', 'company_event', 'meeting', 'other'] as const;

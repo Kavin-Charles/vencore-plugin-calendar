@@ -1,6 +1,6 @@
 import { Router, type Response } from 'express';
 import type { Kysely } from 'kysely';
-import type { Database } from '@vantage/db';
+import type { Database } from '@vencore/db';
 import { createCalendarRouter } from './routes/calendar';
 
 function serveUi(res: Response) {
@@ -39,7 +39,7 @@ h1{font-size:16px;font-weight:600;letter-spacing:-.3px}
 </header>
 <div class="content" id="content"><div class="empty">Loading…</div></div>
 <script>
-const BASE = '/api/plugins/route/com.vantage.calendar';
+const BASE = '/api/plugins/route/com.vencore.calendar';
 let TOKEN = null;
 const START = '${monthStart}', END = '${monthEnd}';
 

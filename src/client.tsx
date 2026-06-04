@@ -1,5 +1,5 @@
 import React from 'react';
-import { createFrontendPlugin } from '@vantage/plugin-sdk/react';
+import { createFrontendPlugin } from '@vencore/plugin-sdk/react';
 
 function CalendarPage() {
   return (
@@ -27,9 +27,9 @@ function CalendarDealPanel({ recordId }: { recordId: string }) {
 }
 
 export default createFrontendPlugin({
-  setup(vantage) {
-    vantage.registerPage('/calendar', CalendarPage);
-    vantage.registerPanel('contact', 'calendar-contact-panel', CalendarContactPanel);
-    vantage.registerPanel('deal', 'calendar-deal-panel', CalendarDealPanel);
+  setup(vencore) {
+    vencore.registerPage('/calendar', CalendarPage);
+    vencore.registerPanel('contact', 'calendar-contact-panel', CalendarContactPanel);
+    vencore.registerPanel('deal', 'calendar-deal-panel', CalendarDealPanel);
   },
 });

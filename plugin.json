@@ -1,10 +1,10 @@
 {
-  "id": "com.vantage.calendar",
+  "id": "com.vencore.calendar",
   "name": "Calendar",
   "version": "1.0.0",
   "description": "Workspace calendar with events, holidays, and company milestones.",
   "icon": "Calendar",
-  "author": "Vantage",
+  "author": "Vencore",
   "permissions": [
     { "key": "calendar:view",   "label": "View calendar events",   "defaultRoles": ["admin", "member"] },
     { "key": "calendar:manage", "label": "Manage calendar events", "defaultRoles": ["admin"] }
@@ -19,7 +19,7 @@
     }
   ],
   "hooks": [],
-  "emits": ["com.vantage.calendar.event.created", "com.vantage.calendar.event.updated"],
+  "emits": ["com.vencore.calendar.event.created", "com.vencore.calendar.event.updated"],
   "surfaces": {
     "nav": [{ "label": "Calendar", "path": "/calendar", "icon": "Calendar", "group": "general" }],
     "pages": [{ "path": "/calendar", "title": "Calendar" }],

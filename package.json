@@ -1,5 +1,5 @@
 {
-  "name": "@vantage/plugin-calendar",
+  "name": "@vencore/plugin-calendar",
   "version": "1.0.0",
   "private": true,
   "main": "./src/index.ts",
@@ -10,8 +10,8 @@
     "lint": "tsc --noEmit"
   },
   "dependencies": {
-    "@vantage/db": "workspace:*",
-    "@vantage/plugin-types": "workspace:*",
+    "@vencore/db": "workspace:*",
+    "@vencore/plugin-types": "workspace:*",
     "express": "^4.19.0",
     "kysely": "^0.27.0",
     "zod": "^3.23.0"
