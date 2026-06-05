@@ -10,13 +10,13 @@
     "lint": "tsc --noEmit"
   },
   "dependencies": {
-    "@vencore/plugin-sdk": "workspace:*"
+    "@vencore/plugin-sdk": "file:../vencore-plugin-sdk/packages/plugin-sdk"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
-    "@vencore/plugin-types": "workspace:*",
+    "@vencore/plugin-types": "file:../vencore-plugin-sdk/packages/plugin-types",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "typescript": "^5.7.0"

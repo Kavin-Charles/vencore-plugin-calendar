@@ -1,10 +1,10 @@
 {
-  "id": "com.example.calendar",
+  "id": "com.vencore.calendar",
   "name": "Calendar",
   "version": "1.0.0",
   "description": "Workspace calendar with events and milestones.",
   "icon": "Calendar",
-  "author": "Vantage",
+  "author": "Vencore",
   "permissions": [
     {
       "key": "calendar:view",
@@ -34,7 +34,7 @@
     }
   ],
   "hooks": ["contact.created"],
-  "emits": ["com.example.calendar.event.created"],
+  "emits": ["com.vencore.calendar.event.created"],
   "surfaces": {
     "nav": [
       { "label": "Calendar", "path": "/calendar", "icon": "Calendar", "group": "general" }

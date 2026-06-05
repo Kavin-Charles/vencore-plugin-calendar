@@ -379,7 +379,7 @@ function formatTime(time: string): string {
 // -- Re-render -------------------------------------------------------
 function rerender(): void {
   const root = document.getElementById('calendar-root');
-  if (!root && !root?.parentElement) return;
+  if (!root || !root.parentElement) return;
   const container = root!.parentElement!;
   container.innerHTML = buildCalendarPage();
 }
